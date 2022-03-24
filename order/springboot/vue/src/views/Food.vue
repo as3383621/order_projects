@@ -2,66 +2,47 @@
     <div style="height: 100%">
         <el-container style="height: 100%">
             <el-header style="background: #292828">
-                <el-row style="height: 100%;" type="flex" justify="center" align="middle">
-                    <el-col :span="3">
-                        <div style="color: white; text-align: center; font-size: 24px;">
-                            食堂点餐系统
-                        </div>
-                    </el-col>
-                    <el-col :span="5">
-                        <el-menu
-                                :default-active=null
-                                mode="horizontal"
-                                @select="handleSelect"
-                                class="el-menu-demo"
-                                background-color="#292828"
-                                text-color="#fff"
-                                active-text-color="#ffd04b"
-                        >
-                            <el-menu-item index="index">食堂首页</el-menu-item>
-                            <el-menu-item index="NewsList">新闻公告</el-menu-item>
-                        </el-menu>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-input autocomplete="off" style="width: 500px;" placeholder="输入菜品名称进行搜索" v-model="FoodName"></el-input>
-                        <router-link :to="{path:'/select',query:{FoodName:FoodName}}"><el-button style="margin-left: 5px" type="primary">搜索</el-button></router-link>
-                    </el-col>
-                    <el-col :span="7">
-                        <div v-if="user">
-                            <span style="color: white">欢迎你：{{user.username}}&nbsp;&nbsp;</span>
-                            <el-button size="mini" style="margin-left: 10px" @click="logout">退出</el-button>
-                            <el-button size="mini" type="primary" @click="$router.push('/car')">购物车</el-button>
-                            <el-button size="mini" type="warning" style="margin-left: 10px" @click="$router.push('/SelectShipped')">订单</el-button>
-                        </div>
-                        <div v-else>
-                            <el-button size="mini" type="primary" @click="$router.push('/user/login')">登录</el-button>
-                            <el-button size="mini" style="margin-left: 10px" @click="$router.push('/user/register')">注册</el-button>
-
-                        </div>
-                    </el-col>
-                </el-row>
+               <navBar></navBar>
             </el-header>
 
             <el-main>
-                <el-form>
-                    <img :src="form.url" style="width: 350px;height: 350px">
-                    <span>菜名：{{form.foodName}}</span>
-                    <span>分类：{{form.category}}</span>
-                    <span>价钱：{{form.price}}元</span>
-                    <span>库存：{{form.stock}}</span>
-                    <span>上架时间：{{form.time}}</span>
-                    <span>数量：</span>
-                    <el-button @click="sub()" :disabled="disabled1">-</el-button>
-                    <span>{{number}}</span>
-                    <el-button @click="add()" :disabled="disabled2">+</el-button>
-                    <div v-if="user">
-                        <el-button type="success" @click="InsertCar(form.id)">加入购物车<i class="el-icon-s-goods"></i></el-button>
+                <el-card>
+                    <div slot="header" class="clearfix">
+                        <span>{{ form.foodName }}</span>
                     </div>
-                    <div v-else>
-                        <span>登入之后将商品加入购物车</span>
-                    </div>
-                </el-form>
-                <div class="title">
+                    <el-form class="details">
+                        <img :src="form.url" style="width:200px;height:200px">
+                        <el-row type="flex" style="flex:1">
+                            <el-col :span="3">
+                                <span>分类：{{form.category}}</span>
+                            </el-col>
+                            <el-col :span="3">
+                                <span>价钱：{{form.price}}元</span>
+                            </el-col>
+                            <el-col :span="3">
+                                <span>库存：{{form.stock}}</span>
+                            </el-col>
+                            <el-col :span="7">
+                                <span>上架时间：{{form.time}}</span>
+                            </el-col>
+                            <el-col :span="5">
+                                <span>数量：</span>
+                                <el-button @click="sub()" :disabled="disabled1" icon="el-icon-minus"></el-button>
+                                <span>{{number}}</span>
+                                <el-button @click="add()" :disabled="disabled2" icon="el-icon-plus"></el-button>
+                            </el-col>
+                            <el-col :span="3">
+                                  <div v-if="user">
+                                        <el-button type="success" @click="InsertCar(form.id)" icon="el-icon-s-goods">加入购物车</el-button>
+                                    </div>
+                                    <div v-else>
+                                        <span>登入之后将商品加入购物车</span>
+                                </div>
+                            </el-col>
+                          
+                        </el-row>
+                    </el-form>
+                    <div class="title">
                     <h1 >用户评论：</h1>
                 </div>
                 <div v-if="comment.length!==0">
@@ -77,27 +58,34 @@
                         <span>当前菜品还没有评论哦！</span>
                     </div>
                     <div style="padding: 10px 0">
-                        <el-pagination
-                                @size-change="handleSizeChange"
-                                @current-change="handleCurrentChange"
-                                :current-page="pageNum"
-                                :page-sizes="[5, 10, 15, 20]"
-                                :page-size="pageSize"
-                                layout="total, sizes, prev, pager, next, jumper"
-                                :total="total">
-                        </el-pagination>
+                        
                     </div>
-
+                </el-card>
             </el-main>
 
+            <el-footer>
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="pageNum"
+                        :page-sizes="[5, 10, 15, 20]"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total">
+                </el-pagination>
+            </el-footer>
         </el-container>
     </div>
 
 </template>
 
 <script>
+import navBar from './components/NavBar.vue'
     export default {
         name: "Food",
+        components: {
+            navBar
+        },
         data() {
             return {
                 user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
@@ -218,6 +206,10 @@
 
 
 <style>
+    .details{
+        display: flex;
+        align-items: baseline;
+    }
     <!-- 表单头部样式 -->
     .headerBg {
         background: #eee!important;
@@ -259,8 +251,6 @@
     .el-main {
         background-color: #E9EEF3;
         color: #333;
-        text-align: center;
-        line-height: 160px;
     }
 
     body > .el-container {
@@ -274,5 +264,9 @@
 
     .el-container:nth-child(7) .el-aside {
         line-height: 320px;
+    }
+
+    .el-footer{
+        background: #e9eef3;
     }
 </style>

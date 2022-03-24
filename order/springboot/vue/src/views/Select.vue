@@ -2,44 +2,7 @@
     <div style="height: 100%">
         <el-container style="height: 100%">
             <el-header style="background: #292828">
-                <el-row style="height: 100%;" type="flex" justify="center" align="middle">
-                    <el-col :span="3">
-                        <div style="color: white; text-align: center; font-size: 24px;">
-                            食堂点餐系统
-                        </div>
-                    </el-col>
-                    <el-col :span="5">
-                        <el-menu
-                                :default-active=null
-                                mode="horizontal"
-                                @select="handleSelect"
-                                class="el-menu-demo"
-                                background-color="#292828"
-                                text-color="#fff"
-                                active-text-color="#ffd04b"
-                        >
-                            <el-menu-item index="index">食堂首页</el-menu-item>
-                            <el-menu-item index="NewsList">新闻公告</el-menu-item>
-                        </el-menu>
-                    </el-col>
-                    <el-col :span="10">
-                        <el-input autocomplete="off" style="width: 500px;" placeholder="输入菜品名称进行搜索" v-model="FoodName"></el-input>
-                        <router-link :to="{path:'/select',query:{FoodName:FoodName}}"><el-button style="margin-left: 5px" type="primary">搜索</el-button></router-link>
-                    </el-col>
-                    <el-col :span="7">
-                        <div v-if="user">
-                            <span style="color: white">欢迎你：{{user.username}}&nbsp;&nbsp;</span>
-                            <el-button size="mini" style="margin-left: 10px" @click="logout">退出</el-button>
-                            <el-button size="mini" type="primary" @click="$router.push('/car')">购物车</el-button>
-                            <el-button size="mini" type="warning" style="margin-left: 10px" @click="$router.push('/SelectShipped')">订单</el-button>
-                        </div>
-                        <div v-else>
-                            <el-button size="mini" type="primary" @click="$router.push('/user/login')">登录</el-button>
-                            <el-button size="mini" style="margin-left: 10px" @click="$router.push('/user/register')">注册</el-button>
-
-                        </div>
-                    </el-col>
-                </el-row>
+                <navBar></navBar>
             </el-header>
 
 
@@ -68,8 +31,10 @@
                         <el-button slot-scope="scope" type="success" @click="InsertCar(scope.row.id)">加入购物车<i class="el-icon-s-goods"></i></el-button>
                     </el-table-column>
                 </el-table>
-                <div style="padding: 10px 0">
-                    <el-pagination
+            </el-main>
+
+            <el-footer>
+                <el-pagination
                             @size-change="handleSizeChange"
                             @current-change="handleCurrentChange"
                             :current-page="pageNum"
@@ -78,17 +43,18 @@
                             layout="total, sizes, prev, pager, next, jumper"
                             :total="total">
                     </el-pagination>
-                </div>
-
-            </el-main>
-
+            </el-footer>
         </el-container>
     </div>
 </template>
 
 <script>
+import navBar from './components/NavBar.vue'
     export default {
         name: "Select",
+        components: {
+            navBar
+        },
         data() {
             return {
                 user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null,
@@ -157,28 +123,6 @@
 </script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
     <!-- 表单头部样式 -->
     .headerBg {
@@ -236,5 +180,13 @@
 
     .el-container:nth-child(7) .el-aside {
         line-height: 320px;
+    }
+
+    .el-footer{
+        background: #e9eef3;
+    }
+
+    a{
+        text-decoration: none;
     }
 </style>
