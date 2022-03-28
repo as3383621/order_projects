@@ -50,7 +50,7 @@
                 <div style="margin-right:20px">总计：{{unit}}元</div>
                 <el-button @click="dialogVisible = true" type="success" slot="reference">支付</el-button>
                 <el-popconfirm
-                        style="margin-left: 5px"
+                        style="margin-left: 5px;margin-top:-4px"
                         confirm-button-text='确定'
                         cancel-button-text='不用了'
                         icon="el-icon-info"
@@ -58,7 +58,7 @@
                         title="您确定批量删除这些数据吗？"
                         @confirm="delBatch"
                 >
-                        <el-button type="danger" slot="reference">批量删除</el-button>
+                    <el-button type="danger" slot="reference">批量删除</el-button>
                 </el-popconfirm>
             </div>
 
@@ -301,6 +301,7 @@ import navBar from './components/NavBar.vue'
         background-color: #E9EEF3;
         color: #333;
         height: 100vh;
+        line-height: 160px;
     }
 
     body > .el-container {

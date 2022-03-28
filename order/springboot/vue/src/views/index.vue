@@ -27,10 +27,10 @@
                                     <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                                 </router-link>
                             </div>
-                            <div>
+                            <div class="foodBox">
                                 <el-form v-for="(food,i) in form1" class="text_item">
                                     <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="width: 200px;height: 200px;cursor: pointer;"></router-link>
+                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
                                     </el-form-item>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
@@ -51,10 +51,10 @@
                                     <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                                 </router-link>
                             </div>
-                           <div>
-                                <el-form v-for="(food,i) in form1" class="text_item">
+                           <div class="foodBox">
+                                <el-form v-for="(food,i) in form2" class="text_item">
                                     <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="width: 200px;height: 200px;cursor: pointer;"></router-link>
+                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
                                     </el-form-item>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
@@ -75,10 +75,10 @@
                                     <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                                 </router-link>
                             </div>
-                            <div>
-                                <el-form v-for="(food,i) in form1" class="text_item">
+                            <div class="foodBox">
+                                <el-form v-for="(food,i) in form3" class="text_item">
                                     <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="width: 200px;height: 200px;cursor: pointer;"></router-link>
+                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
                                     </el-form-item>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
@@ -99,10 +99,10 @@
                                     <el-button style="float: right; padding: 3px 0" type="text">更多</el-button>
                                 </router-link>
                             </div>
-                            <div>
-                                <el-form v-for="(food,i) in form1" class="text_item">
+                            <div class="foodBox">
+                                <el-form v-for="(food,i) in form4" class="text_item">
                                     <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="width: 200px;height: 200px;cursor: pointer;"></router-link>
+                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
                                     </el-form-item>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
@@ -215,14 +215,6 @@ export default {
         line-height: 160px;
 }
 
-.text_item{
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-}
-.text_item_img{
-    flex: 1;
-}
 .el-form-item__content{
     font-size: 20px;
 }
@@ -299,5 +291,35 @@ export default {
 
   .box-card {
     width: 100%;
+      overflow:hidden;
   }
+
+  .foodBox{
+      display: -webkit-box;
+      height: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+  }
+  .foodBox::-webkit-scrollbar {
+  display: none;
+}
+
+.text_item {
+    width: 169px;
+    height: 235px;
+    line-height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    background: white;
+    position: relative;
+    cursor: pointer;
+    font-size:14px
+}
+.text_item_img{
+    width: 169px;
+    height: 120px;
+}
 </style>

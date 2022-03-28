@@ -7,15 +7,26 @@
 
             <el-main>
                 <div v-if="News.length!==0">
-                    <el-form v-for="(News,i) in News">
-                        <el-form-item>
-                            <span>{{News.username}}</span>
-                            <router-link :to="{path:'/NewsMinute',query:{id:News.id}}">
-                                <span>{{News.title}}</span>
-                            </router-link>
-                            <span>{{News.time}}</span>
-                        </el-form-item>
-                    </el-form>
+                    <el-table :data="News" :header-cell-style="{ color: '#515a6e'}" >
+                        <el-table-column label="作者" align="center" key="username" prop="username"  />
+                        <el-table-column label="标题" align="center" key="title" prop="title"  />
+                        <el-table-column label="创建时间" align="center" prop="time" width="160" />
+                        <el-table-column
+                            label="操作"
+                            align="center"
+                            width="160"
+                            class-name="small-padding fixed-width"
+                        >
+                            <template slot-scope="scope">
+                            <el-button
+                                size="mini"
+                                type="text"
+                                icon="el-icon-edit"
+                                @click="toPage(scope.row)"
+                            >查看</el-button>
+                            </template>
+                        </el-table-column>
+                    </el-table>
                 </div>
                 <div v-else>
                     <span>当前没有人发布新闻公告。</span>
@@ -53,7 +64,7 @@ import navBar from './components/NavBar.vue'
                 pageNum: 1,
                 pageSize: 5,
                 total: 0,
-                News:{},
+                News:[],
             };
         },
         created() {
@@ -64,6 +75,7 @@ import navBar from './components/NavBar.vue'
                 fetch("http://localhost:9090/news/list?pageNum=" + this.pageNum + "&pageSize=" + this.pageSize)
                     .then(res => res.json()).then(res => {
                     if(res.code === '200') {
+                        console.log(res);
                         this.News = res.data.records
                         this.total = res.data.total
                     } else {
@@ -71,6 +83,9 @@ import navBar from './components/NavBar.vue'
                     }
 
                 })
+            },
+            toPage(row){
+                this.$router.push(`/NewsMinute/?id=${row.id}`)
             },
             //搜索
             select() {
@@ -136,7 +151,7 @@ import navBar from './components/NavBar.vue'
         background-color: #E9EEF3;
         color: #333;
         text-align: center;
-        line-height: 160px;
+        line-height: 40px;
     }
 
     body > .el-container {
@@ -154,5 +169,11 @@ import navBar from './components/NavBar.vue'
     
     .el-footer{
         background: #E9EEF3;
+    }
+
+    .el-table__header tr,
+        .el-table__header th {
+            padding: 0;
+            height: 40px;
     }
 </style>

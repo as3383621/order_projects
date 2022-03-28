@@ -7,22 +7,13 @@
 
             <el-main>
                 <div v-if="form.length!==0">
-                    <!-- <el-form v-for="(food,i) in form">
-                        <div style="height: 200px;width: 200px;float: left;margin-right: 10px; ">
-                            <el-form-item>
-                                <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="width: 200px;height: 200px;cursor: pointer;"></router-link>
-                                <p>菜名：{{food.foodName}}</p>
-                                <p>价钱：{{food.price}}元</p>
-                            </el-form-item>
-                        </div>
-                    </el-form> -->
                     <el-card class="box-card" v-for="(food,i) in form">
                         <div slot="header" class="clearfix">
                             <span>{{ food.foodName}}</span>
                         </div>
                         <div class="text_item">
-                            <div style="flex:1">
-                                <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="width: 200px;height: 200px;cursor: pointer;"></router-link>
+                            <div class="text_item_img">
+                                <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
                             </div>
                             <p>价钱：{{food.price}}元</p>
                         </div>
@@ -139,8 +130,22 @@ import navBar from './components/NavBar.vue'
     width: 100%
   }
   .text_item{
-      display: flex;
-      align-items: center;
-      font-size: 20px;
+    width: 169px;
+    height: 235px;
+    line-height: 20px;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    background: white;
+    position: relative;
+    cursor: pointer;
+    font-size:14px
+  }
+
+  .text_item_img{
+    width: 169px;
+    height: 169px;
   }
 </style>
