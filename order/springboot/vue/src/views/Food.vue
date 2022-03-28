@@ -42,15 +42,15 @@
                           
                         </el-row>
                     </el-form>
-                    <div class="title">
-                    <h1 >用户评论：</h1>
-                </div>
+                    <div  class="comment">
+                        <h1 >用户评论：</h1>
+                    </div>
                 <div v-if="comment.length!==0">
-                    <el-form v-for="(comment,i) in comment">
+                    <el-form v-for="(comment,i) in comment" class="comment">
                             <el-form-item>
-                                <span>{{comment.username}}</span>
-                                <span>{{comment.time}}</span>
+                                <p>{{comment.username}}</p>
                                 <span>{{comment.connect}}</span>
+                                <p>{{comment.time}}</p>
                             </el-form-item>
                     </el-form>
                 </div>
@@ -206,6 +206,7 @@ import navBar from './components/NavBar.vue'
 
 
 <style>
+
     .details{
         display: flex;
         align-items: baseline;
@@ -268,5 +269,8 @@ import navBar from './components/NavBar.vue'
 
     .el-footer{
         background: #e9eef3;
+    }
+    .comment{
+        font-size: 12px;
     }
 </style>
