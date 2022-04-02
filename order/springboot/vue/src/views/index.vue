@@ -29,9 +29,11 @@
                             </div>
                             <div class="foodBox">
                                 <el-form v-for="(food,i) in form1" class="text_item">
-                                    <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
-                                    </el-form-item>
+                                    <router-link :to="{path:'/minute',query:{id:food.id}}">
+                                        <el-form-item class="text_item_img">
+                                            <img :src="food.url" style="cursor: pointer;">
+                                        </el-form-item>
+                                    </router-link>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
@@ -53,9 +55,11 @@
                             </div>
                            <div class="foodBox">
                                 <el-form v-for="(food,i) in form2" class="text_item">
-                                    <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
-                                    </el-form-item>
+                                     <router-link :to="{path:'/minute',query:{id:food.id}}">
+                                        <el-form-item class="text_item_img">
+                                            <img :src="food.url" style="cursor: pointer;">
+                                        </el-form-item>
+                                    </router-link>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
@@ -77,9 +81,11 @@
                             </div>
                             <div class="foodBox">
                                 <el-form v-for="(food,i) in form3" class="text_item">
-                                    <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
-                                    </el-form-item>
+                                     <router-link :to="{path:'/minute',query:{id:food.id}}">
+                                        <el-form-item class="text_item_img">
+                                            <img :src="food.url" style="cursor: pointer;">
+                                        </el-form-item>
+                                    </router-link>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
@@ -101,9 +107,11 @@
                             </div>
                             <div class="foodBox">
                                 <el-form v-for="(food,i) in form4" class="text_item">
-                                    <el-form-item class="text_item_img">
-                                        <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
-                                    </el-form-item>
+                                     <router-link :to="{path:'/minute',query:{id:food.id}}">
+                                        <el-form-item class="text_item_img">
+                                            <img :src="food.url" style="cursor: pointer;">
+                                        </el-form-item>
+                                    </router-link>
                                     <el-form-item>
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
