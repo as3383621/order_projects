@@ -13,7 +13,7 @@
                         </div>
                         <div class="text_item">
                             <div class="text_item_img">
-                                <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url" style="cursor: pointer;"></router-link>
+                                <router-link :to="{path:'/minute',query:{id:food.id}}"><img :src="food.url"  class="img"></router-link>
                             </div>
                             <p>价钱：{{food.price}}元</p>
                         </div>
@@ -148,4 +148,13 @@ import navBar from './components/NavBar.vue'
     width: 169px;
     height: 169px;
   }
+  .img{
+    width: 169px;
+    height: 160px;
+    cursor: pointer;
+}
+p{
+    padding-top: 10px;
+}
+
 </style>

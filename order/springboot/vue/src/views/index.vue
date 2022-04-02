@@ -31,10 +31,10 @@
                                 <el-form v-for="(food,i) in form1" class="text_item">
                                     <router-link :to="{path:'/minute',query:{id:food.id}}">
                                         <el-form-item class="text_item_img">
-                                            <img :src="food.url" style="cursor: pointer;">
+                                            <img :src="food.url"  class="img">
                                         </el-form-item>
                                     </router-link>
-                                    <el-form-item>
+                                    <el-form-item class="text_item_content">
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
                                     </el-form-item>
@@ -57,10 +57,10 @@
                                 <el-form v-for="(food,i) in form2" class="text_item">
                                      <router-link :to="{path:'/minute',query:{id:food.id}}">
                                         <el-form-item class="text_item_img">
-                                            <img :src="food.url" style="cursor: pointer;">
+                                            <img :src="food.url"  class="img">
                                         </el-form-item>
                                     </router-link>
-                                    <el-form-item>
+                                    <el-form-item class="text_item_content">
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
                                     </el-form-item>
@@ -83,10 +83,10 @@
                                 <el-form v-for="(food,i) in form3" class="text_item">
                                      <router-link :to="{path:'/minute',query:{id:food.id}}">
                                         <el-form-item class="text_item_img">
-                                            <img :src="food.url" style="cursor: pointer;">
+                                            <img :src="food.url"  class="img">
                                         </el-form-item>
                                     </router-link>
-                                    <el-form-item>
+                                    <el-form-item class="text_item_content">
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
                                     </el-form-item>
@@ -109,10 +109,10 @@
                                 <el-form v-for="(food,i) in form4" class="text_item">
                                      <router-link :to="{path:'/minute',query:{id:food.id}}">
                                         <el-form-item class="text_item_img">
-                                            <img :src="food.url" style="cursor: pointer;">
+                                            <img :src="food.url"  class="img">
                                         </el-form-item>
                                     </router-link>
-                                    <el-form-item>
+                                    <el-form-item class="text_item_content">
                                         <p>菜名：{{food.foodName}}</p>
                                         <p>价钱：{{food.price}}元</p>
                                     </el-form-item>
@@ -224,8 +224,10 @@ export default {
 }
 
 .el-form-item__content{
-    font-size: 20px;
+    font-size: 16px;
 }
+
+
     .el-col {
         border-radius: 4px;
     }
@@ -284,9 +286,6 @@ export default {
     font-size: 14px;
   }
 
-  .item {
-    margin-bottom: 18px;
-  }
 
   .clearfix:before,
   .clearfix:after {
@@ -324,10 +323,22 @@ export default {
     background: white;
     position: relative;
     cursor: pointer;
-    font-size:14px
+    font-size:14px;
 }
 .text_item_img{
     width: 169px;
     height: 120px;
 }
+.text_item_content{
+    padding-top: 15px;
+}
+.img{
+    width: 169px;
+    height: 160px;
+    cursor: pointer;
+}
+p{
+    margin: 10px;
+}
+
 </style>
